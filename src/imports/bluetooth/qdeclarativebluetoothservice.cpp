@@ -54,12 +54,11 @@
     \qmltype BluetoothService
     \instantiates QDeclarativeBluetoothService
     \inqmlmodule QtBluetooth
+    \since 5.2
     \brief Provides information about a particular Bluetooth service.
 
     \sa QBluetoothAddress
     \sa QBluetoothSocket
-
-    The BluetoothService type was introduced in \b{QtBluetooth 5.0}.
 
     It allows a QML project to get information about a remote service, or describe a service
     for a BluetoothSocket to connect to.
@@ -273,13 +272,11 @@ int QDeclarativeBluetoothServicePrivate::listen() {
         qWarning() << "Unknown protocol, can't make service" << m_protocol;
         return -1;
     }
-    QBluetoothServiceInfo::Protocol serverType;
-    if (m_service->socketProtocol() == QBluetoothServiceInfo::L2capProtocol) {
+    QBluetoothServiceInfo::Protocol serverType = QBluetoothServiceInfo::UnknownProtocol;
+    if (m_service->socketProtocol() == QBluetoothServiceInfo::L2capProtocol)
         serverType = QBluetoothServiceInfo::L2capProtocol;
-    }
-    else if (m_service->socketProtocol() == QBluetoothServiceInfo::RfcommProtocol) {
+    else if (m_service->socketProtocol() == QBluetoothServiceInfo::RfcommProtocol)
         serverType = QBluetoothServiceInfo::RfcommProtocol;
-    }
 
     QBluetoothServer *server = new QBluetoothServer(serverType);
     server->setMaxPendingConnections(1);

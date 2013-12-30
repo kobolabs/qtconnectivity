@@ -52,7 +52,8 @@
 /*!
     \qmltype NearField
     \instantiates QDeclarativeNearField
-    \brief The NearField type provides access to NDEF messages stored on NFC Forum tags.
+    \since 5.2
+    \brief Provides access to NDEF messages stored on NFC Forum tags.
 
     \ingroup nfc-qml
     \inqmlmodule QtNfc
@@ -63,8 +64,6 @@
     \sa QNearFieldManager
     \sa QNdefMessage
     \sa QNdefRecord
-
-    The NearField type was introduced in \b {QtNfc 5.0}.
 
     The NearField type can be used to read NDEF messages from NFC Forum tags.  Set the \l filter
     and \l orderMatch properties to match the required NDEF messages.  Once an NDEF message is
